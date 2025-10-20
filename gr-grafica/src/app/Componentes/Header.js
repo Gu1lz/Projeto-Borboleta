@@ -1,10 +1,12 @@
+"use client";
 import styles from "./styles/Header.css";
 import Logo from "../Assets/logo.jpeg";
+import Funcs from "./Funcs.js";
 
 
 
 const Header = () => {
-
+  const { abrirOrca } = Funcs();
   const links = [
     { href: "#comunicacao", label: "Comunicação Visual" },
     { href: "#copiadora", label: "Copiadora" },
@@ -23,7 +25,7 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <button id="botao-orcamento" >Orçamento</button>
+        <button id="botao-orcamento" onClick={abrirOrca}>Orçamento</button>
       </nav>
     </header>
   );

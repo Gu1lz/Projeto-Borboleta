@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -54,8 +54,7 @@
     background: #e55a2b;
 }
 
-#mensagemSucesso, #mensagemSucessoCheckout {
-    display: none;
+#mensagemSucesso {
     margin-top: 1rem;
     color: green;
     font-weight: bold;
