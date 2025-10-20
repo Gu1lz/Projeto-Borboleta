@@ -1,0 +1,54 @@
+import Style from "./Produtos.css";
+
+const Produtos = () => {
+  const produtos = [
+  {
+    id: "cartaoVisita",
+    nome: "Cartões de Visita",
+    preco: "Pack com 20 por R$ 200,00",
+    imagem: "VISITA.png",
+    alt: "Cartão de Visita",
+  },
+  {
+    id: "cartaoBanner",
+    nome: "Banners",
+    preco: "A partir de R$ 55,00",
+    imagem: "BANNER.jpg",
+    alt: "Banner",
+  },
+  {
+    id: "cartaoFlyer",
+    nome: "Flyers",
+    preco: "Pack com 20 por R$ 150,00",
+    imagem: "FLYER.png",
+    alt: "Flyer",
+  },
+  {
+    id: "cartaoAdesivo",
+    nome: "Adesivos",
+    preco: "Pack com 20 por R$ 170,00",
+    imagem: "ADESSIVO.jpg",
+    alt: "Adesivo",
+  },
+];
+  return (
+    <section id="produtos">
+      <h2 id="tituloProdutos">Produtos B2C</h2>
+      <p id="subtituloProdutos">Escolha entre nossos principais produtos</p>
+
+      <ul id="gradeProdutos">
+        {produtos.map((produto) => (
+          <li key={produto.id} id={produto.id} className="cartaoProduto">
+            <img className="imagemProduto" src={produto.imagem} alt={produto.alt} />
+            <article className="infoProduto">
+              <h4>{produto.nome}</h4>
+              <p className="precoProduto">{produto.preco}</p>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export default Produtos;
