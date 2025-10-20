@@ -1,4 +1,4 @@
-import Style from "./Sobre.css";
+import Style from "./styles/Sobre.css";
 import Screen from "../Assets/Screen.png";
 
 const Sobre = () => {

@@ -1,5 +1,4 @@
-
-
+import "./styles/MenuCompra.css";
 
 const MenuCompra = () => {
   return (

@@ -1,4 +1,4 @@
-import styles from "./Header.css";
+import styles from "./styles/Header.css";
 import Logo from "../Assets/logo.jpeg";
 
 
@@ -23,7 +23,7 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <button id="botao-orcamento">Orçamento</button>
+        <button id="botao-orcamento" >Orçamento</button>
       </nav>
     </header>
   );

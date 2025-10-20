@@ -1,4 +1,4 @@
-import style from "./Destaque.css";
+import style from "./styles/Destaque.css";
 
 const Destaque = () => {
     return (

@@ -1,4 +1,4 @@
-import styles from "./Servicos.css";
+import styles from "./styles/Servicos.css";
 
 const Servicos = () => {
   return (

@@ -1,4 +1,4 @@
-import Style from "./Produtos.css";
+import Style from "./styles/Produtos.css";
 
 const Produtos = () => {
   const produtos = [
