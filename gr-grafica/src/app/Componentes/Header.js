@@ -5,11 +5,6 @@ import { useState } from "react";
 
 
 const Header = ({ abrirMenu }) => {
-  const [menuAtivo, setMenuAtivo] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuAtivo(!menuAtivo);
-  };
   const logo = "/Assets/logo.jpeg";
   const links = [
     { href: "#comunicacao", label: "Comunicação Visual" },
@@ -22,8 +17,6 @@ const Header = ({ abrirMenu }) => {
     <header>
       <nav>
         <Image src={logo} width={200} height={100} alt="logo.jpeg"></Image>
-
-        <button className="menu-san" onClick={toggleMenu}> ☰ </button>
 
         <ul className="menu-navegacao" id="menu"> 
             {links.map((link, index) => (
