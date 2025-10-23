@@ -57,7 +57,6 @@ Além disso, um botão para fazer Orçamento
 
 #### Header Responsivo
 
-* Implementa o **menu sanduíche** controlado por estado (`menuAtivo`), garantindo que a navegação se adapte a telas menores.
 * CSS modularizado com media queries para até **480px**, **768px** e **1024px**.
 
 ---
@@ -68,8 +67,7 @@ O CSS foi reestruturado para o padrão Next.js, garantindo:
 
 * Layout fluido com *grid* e *flexbox*.
 * Padrões de espaçamento e fontes consistentes.
-* Media queries que ajustam tamanhos de fonte, espaçamento e exibição de elementos conforme a tela.
-* Suporte ao **modo escuro** com inversão de cores no logotipo e botões.
+* Media queries que ajustam tamanhos de fonte, espaçamento e exibição de elementos conforme a tela
 
 ---
 
