@@ -1,10 +1,11 @@
 import Style from "./styles/Produtos.css";
 
-const Produtos = () => {
+const Produtos = ({ adicionarProduto }) => {
   const produtos = [
   {
     id: "cartaoVisita",
     nome: "Cartões de Visita",
+    valor: "200",
     preco: "Pack com 20 por R$ 200,00",
     imagem: "/Assets/VISITA.png",
     alt: "Cartão de Visita",
@@ -12,6 +13,7 @@ const Produtos = () => {
   {
     id: "cartaoBanner",
     nome: "Banners",
+    valor: "55",
     preco: "A partir de R$ 55,00",
     imagem: "/Assets/BANNER.jpg",
     alt: "Banner",
@@ -19,6 +21,7 @@ const Produtos = () => {
   {
     id: "cartaoFlyer",
     nome: "Flyers",
+    valor: "150",
     preco: "Pack com 20 por R$ 150,00",
     imagem: "/Assets/FLYER.png",
     alt: "Flyer",
@@ -26,6 +29,7 @@ const Produtos = () => {
   {
     id: "cartaoAdesivo",
     nome: "Adesivos",
+    valor: "170",
     preco: "Pack com 20 por R$ 170,00",
     imagem: "/Assets/ADESSIVO.jpg",
     alt: "Adesivo",
@@ -38,7 +42,7 @@ const Produtos = () => {
 
       <ul id="gradeProdutos">
         {produtos.map((produto) => (
-          <li key={produto.id} id={produto.id} className="cartaoProduto">
+          <li key={produto.id} id={produto.id} className="cartaoProduto" onClick={() => adicionarProduto(produto)}>
             <img className="imagemProduto" src={produto.imagem} alt={produto.alt} />
             <article className="infoProduto">
               <h4>{produto.nome}</h4>

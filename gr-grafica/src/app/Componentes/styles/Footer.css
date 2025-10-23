@@ -76,12 +76,3 @@ footer {
   font-size: 0.9rem;
   color: #ccc;
 }
-
-/* Responsivo */
-@media(max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-}

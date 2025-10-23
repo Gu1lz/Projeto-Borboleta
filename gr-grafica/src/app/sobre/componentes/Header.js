@@ -1,30 +1,26 @@
 "use client";
 import Image from "next/image";
-import styles from "./styles/Header.css";
-import { useState } from "react";
+import styles from "../../Componentes/styles/Header.css"
+import Link from "next/link";
 
 
-const Header = ({ abrirMenu }) => {
-  const [menuAtivo, setMenuAtivo] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuAtivo(!menuAtivo);
-  };
+const Header = () => {
   const logo = "/Assets/logo.jpeg";
   const links = [
     { href: "#comunicacao", label: "Comunicação Visual" },
     { href: "#copiadora", label: "Copiadora" },
     { href: "#impressao", label: "Impressão Digital" },
-    { href: "/sobre", label: "Sobre Nós" },
+    { href: "sobre.html", label: "Sobre Nós" },
     { href: "#contato", label: "Contato" },
   ];
+  const voltarParaHome = () => {
+    window.location.href = "/";
+  };
   return (
     <header>
       <nav>
         <Image src={logo} width={200} height={100} alt="logo.jpeg"></Image>
-
-        <button className="menu-san" onClick={toggleMenu}> ☰ </button>
-
         <ul className="menu-navegacao" id="menu"> 
             {links.map((link, index) => (
             <li key={index}>
@@ -32,7 +28,9 @@ const Header = ({ abrirMenu }) => {
             </li>
           ))}
         </ul>
-        <button onClick={abrirMenu} id="botao-orcamento" >Orçamento</button>
+         <button id="botao-orcamento" onClick={voltarParaHome}>
+            Home
+        </button>
       </nav>
     </header>
   );

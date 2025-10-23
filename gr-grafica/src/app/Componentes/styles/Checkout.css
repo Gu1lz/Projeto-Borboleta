@@ -1,0 +1,79 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000066;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.checkout-cartao {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px #00000033;
+  position: relative;
+}
+
+#itensCheckout div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+#itensCheckout button {
+  background: #ff9800;
+  border: none;
+  color: #ffffff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#itensCheckout button:hover {
+  background: #e68900;
+}
+
+#subtotal {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form input {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+form button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: #ff9800;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #e68900;
+}
+
+.mensagem {
+  text-align: center;
+  color: #ff9800;
+  margin-top: 0.8rem;
+}

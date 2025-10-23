@@ -61,22 +61,3 @@ nav {
 #botao-orcamento:hover {
   background: #e55a2b;
 }
-
-@media (max-width: 768px) {
-  .menu-san {
-    display: block;
-  }
-
-  .menu-navegacao {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: #2d2d2d;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .menu-navegacao.active {
-    display: flex;
-  }
-}

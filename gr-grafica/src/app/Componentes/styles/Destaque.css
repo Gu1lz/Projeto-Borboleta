@@ -1,6 +1,6 @@
-/* Destaque */
+
 #destaque {
-  background-color: #f8f9fa; /* fundo visível */
+  background-color: #f8f9fa; 
   padding: 4rem 1rem;
   text-align: center;
 }
@@ -13,7 +13,7 @@
 #conteudoDestaque h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #2d2d2d; /* texto escuro */
+  color: #2d2d2d; 
 }
 
 #conteudoDestaque p {
@@ -23,7 +23,6 @@
   line-height: 1.8;
 }
 
-/* Botões */
 #botoesDestaque {
   display: flex;
   gap: 1rem;
@@ -43,7 +42,6 @@
   display: inline-block;
 }
 
-/* Botão principal */
 #botaoPrimario {
   background-color: #ff6b35;
   color: #fff;

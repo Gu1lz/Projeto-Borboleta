@@ -8,3 +8,110 @@ body {
 a {
   text-decoration: none;
 }
+
+@media (max-width: 1024px) {
+    nav {
+        padding: 0.6rem 1rem;
+    }
+    #checkout article {
+        width: 90%;        
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .menu-navegacao {
+        gap: 1.5rem;
+    }
+
+    .conteudo-destaque h2 {
+        font-size: 2.2rem;
+    }
+
+    .cartao-servico, .cartao-produto {
+        max-width: 220px;
+        flex: 1 1 200px;
+    }
+
+    .conteudo-sobre {
+        gap: 2rem;
+    }
+    #botao-orcamento {
+	display: none;	
+    }
+
+}
+
+@media (max-width: 768px) {
+  .menu-san {
+    display: block;
+  }
+  
+    #checkout article {
+        width: 90%;        
+        padding: 15px;
+        font-size: 14px;
+    }
+
+  .menu-navegacao {
+    display: none;   
+    flex-direction: column;
+    gap: 1rem;
+    background: #2d2d2d;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .menu-navegacao.active {
+    display: flex;
+   }
+}
+
+
+
+@media (max-width: 480px) {
+    .destaque {
+        padding: 2rem 1rem;
+    }
+
+    .conteudo-destaque h2 {
+        font-size: 1.6rem;
+    }
+
+    .conteudo-destaque p {
+        font-size: 1rem;
+    }
+
+    .titulo-secao {
+        font-size: 1.4rem;
+    }
+
+    .servicos, .produtos, .sobre-nos {
+        padding: 2rem 1rem;
+    }
+
+    .cartao-servico, .cartao-produto {
+        max-width: 100%;
+    }
+
+    .conteudo-sobre p {
+        font-size: 0.95rem;
+    }
+
+    .imagem-sobre {
+        height: 220px;
+    }
+
+    .botao-primario, .botao-secundario {
+        width: 100%;
+        padding: 0.7rem 0;
+    }
+     #checkout article {
+        width: 90%;       
+        padding: 15px;
+        font-size: 14px;
+	    }
+}
