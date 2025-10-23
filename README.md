@@ -19,7 +19,7 @@ A página principal foi reescrita utilizando componentes modulares do Next.js, p
 Ela é composta por:
 
 * **Header:** Barra de navegação construída com a tag `<nav>`, contendo os links para *Comunicação Visual*, *Copiadora*, *Impressão Digital*, *Sobre Nós* e *Contato*.
-  Inclui também o menu “sanduíche” (`menuSan`) para dispositivos móveis, que alterna a visibilidade da navegação ao toque.
+Além disso, um botão para fazer Orçamento
 
 * **Destaque:** Primeira seção do site, apresentando o banner principal e um botão para solicitar orçamento, voltado principalmente ao público corporativo (B2B).
 
