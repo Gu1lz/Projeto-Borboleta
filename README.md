@@ -1,7 +1,10 @@
 
+
 Este repositório representa a versão em Next.js do projeto GR Soluções Gráficas, uma iniciativa desenvolvida com o propósito de contribuir com a comunidade, apoiando a empresa GR Gráfica na criação de um site moderno, funcional e acessível.
 
 O objetivo principal deste projeto é oferecer uma experiência de navegação fluida, responsiva e interativa, unindo a estética visual de um site institucional com a praticidade de um sistema de orçamentos e checkout totalmente funcional. Além disso, o projeto serve como exemplo técnico e didático para estudantes e desenvolvedores que desejam compreender na prática a estruturação de um site completo em Next.js.
+
+link do git: https://github.com/Gu1lz/Projeto-Borboleta/tree/main
 
 ---
 
