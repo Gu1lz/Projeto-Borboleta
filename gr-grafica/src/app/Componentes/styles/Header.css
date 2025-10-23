@@ -3,15 +3,6 @@ header {
   color: white;
 }
 
-.menu-san {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
 nav {
   max-width: 1200px;
   margin: 0 auto;
