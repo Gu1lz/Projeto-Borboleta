@@ -1,0 +1,160 @@
+.pagina-checkout {
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f8f8f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho-checkout {
+  background: #1f1f1f;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cabecalho-checkout .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.cabecalho-checkout .caminho {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.corpo-checkout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.formulario-checkout {
+  flex: 1 1 60%;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-checkout h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.grade-formulario fieldset {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+.grade-formulario legend {
+  padding: 0 0.5rem;
+  font-weight: bold;
+}
+
+.grade-formulario label {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.grade-formulario input[type="text"],
+.grade-formulario input[type="email"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.3rem;
+}
+
+.linha {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.botao-principal {
+  background: #0070f3;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.botao-principal:hover {
+  background: #005ccc;
+}
+
+.resumo-pedido {
+  flex: 1 1 35%;
+}
+
+.cartao-resumo {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cartao-resumo h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.item-resumo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.item-resumo article {
+  display: flex;
+  flex-direction: column;
+}
+
+.linha-resumo,
+.total-resumo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+
+.total-resumo {
+  border-top: 1px solid #ccc;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .corpo-checkout {
+    flex-direction: column;
+  }
+
+  .resumo-pedido {
+    flex: 1 1 100%;
+  }
+}

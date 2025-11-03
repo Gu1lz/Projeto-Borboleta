@@ -7,7 +7,6 @@ import Produtos from "./Componentes/Produtos.js";
 import Footer from "./Componentes/Footer.js";
 import MenuOrcamento from "./Componentes/MenuOrcamento.js";
 import Header from "./Componentes/Header.js";
-import Checkout from "./Componentes/Checkout.js"
 
 export default function Home() {
   const [aberto, setAberto] = useState(false);
@@ -21,25 +20,14 @@ export default function Home() {
   const abrirCheckout = () => setCheckoutAberto(true);
   const fecharCheckout = () => setCheckoutAberto(false);
 
-  const adicionarProduto = (produto) => {
-    setCarrinho([...carrinho, produto]);
-    setCheckoutAberto(true);
-  };
-
   return (
     <>
       <Header abrirMenu={abrirMenu}/>
       <MenuOrcamento aberto={aberto} fecharMenu={fecharMenu} />
-      <Checkout 
-        aberto={checkoutAberto}
-        fecharMenu={fecharCheckout}
-        produtos={carrinho}
-        setProdutos={setCarrinho} 
-      />
       <main>
         <Destaque />
         <Servicos abrirMenu={abrirMenu}/>
-        <Produtos adicionarProduto={adicionarProduto} />
+        <Produtos/>
         <Sobre />
       </main>
 

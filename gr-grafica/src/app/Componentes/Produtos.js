@@ -1,6 +1,7 @@
 import Style from "./styles/Produtos.css";
+import Link from "next/link";
 
-const Produtos = ({ adicionarProduto }) => {
+const Produtos = ({}) => {
   const produtos = [
   {
     id: "cartaoVisita",
@@ -42,7 +43,7 @@ const Produtos = ({ adicionarProduto }) => {
 
       <ul id="gradeProdutos">
         {produtos.map((produto) => (
-          <li key={produto.id} id={produto.id} className="cartaoProduto" onClick={() => adicionarProduto(produto)}>
+          <li key={produto.id} id={produto.id} className="cartaoProduto" onClick={() => window.location.href = `/Produtos/${produto.id}`}>
             <img className="imagemProduto" src={produto.imagem} alt={produto.alt} />
             <article className="infoProduto">
               <h4>{produto.nome}</h4>
