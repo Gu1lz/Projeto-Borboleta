@@ -52,3 +52,47 @@ nav {
 #botao-orcamento:hover {
   background: #e55a2b;
 }
+
+.menu-san {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+  .menu-san {
+    display: block;
+    font-size: 1.5rem;
+    background: #ff6b35;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .menu-navegacao {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background: #2d2d2d;
+    padding: 1rem 0;
+    z-index: 10;
+  }
+
+  .menu-navegacao.active {
+    display: flex;
+  }
+
+  .menu-navegacao li a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+  }
+
+  #botao-orcamento {
+    display: none;
+  }
+}

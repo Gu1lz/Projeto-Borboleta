@@ -13,12 +13,20 @@ const Header = ({ abrirMenu }) => {
     { href: "/sobre", label: "Sobre Nós" },
     { href: "#contato", label: "Contato" },
   ];
+
+  const [menuSan, setMenuSan] = useState(false);
+  const abrirMenuSan = () => setMenuSan(!menuSan)
+
+  let classesMenu = "menu-navegacao";
+  if (menuSan == true) {
+    classesMenu += " active";
+  }
   return (
     <header>
       <nav>
         <Image src={logo} width={200} height={100} alt="logo.jpeg"></Image>
-
-        <ul className="menu-navegacao" id="menu"> 
+        <button className="menu-san" onClick={abrirMenuSan}>☰</button>
+        <ul className={classesMenu} id="menu"> 
             {links.map((link, index) => (
             <li key={index}>
               <a href={link.href}>{link.label}</a>

@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <>
-      <Header abrirMenu={abrirMenu} />
+      <Header abrirMenu={abrirMenu}/>
       <MenuOrcamento aberto={aberto} fecharMenu={fecharMenu} />
       <Checkout 
         aberto={checkoutAberto}
