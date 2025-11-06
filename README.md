@@ -47,16 +47,23 @@ Além disso, um botão para fazer Orçamento
 * Após envio, exibe uma mensagem de sucesso e fecha automaticamente após alguns segundos.
 * Gerenciado pelos hooks `useState` e callbacks `abrirMenu` / `fecharMenu`.
 
-#### Checkout (`Checkout.js`)
+Claro! Aqui está o trecho prontinho para você **copiar e colar no seu README.md** 👇
 
-* Exibe o carrinho de compras com os itens adicionados.
-* Permite remover produtos, visualizar o subtotal e confirmar o pedido.
+---
+#### Página de Checkout (`Produtos.js`)
+
+* Responsável pela etapa de **finalização de compra**, exibindo as informações do produto selecionado e o resumo do pedido.
+* Permite ajustar a quantidade, calcular automaticamente o total e preencher os dados do cliente.
+* Estrutura dividida em seções para **dados pessoais**, **endereço de entrega** e **forma de pagamento**.
+* Inclui botão para retornar à página inicial (`Home`).
 * Funções principais:
 
-  * `abrirCheckout()` e `fecharCheckout()` controlam a visibilidade.
-  * `adicionarProduto()` adiciona itens ao carrinho.
-  * `removerDoCheckout()` atualiza o estado removendo itens específicos.
-  * `calcularTotal()` soma todos os valores e exibe o total formatado em reais.
+  * `adicionar()` — incrementa a quantidade de produtos.
+  * `remover()` — reduz a quantidade, respeitando o mínimo de 1 item.
+  * `voltarParaHome()` — redireciona o usuário para a página principal.
+  * Cálculo dinâmico do **subtotal** e **total** baseado na quantidade selecionada.
+  * Utilização de **React Hooks (useState)** e **Next/Image** para performance e interatividade.
+
 
 #### Header Responsivo
 
