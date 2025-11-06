@@ -9,11 +9,17 @@
 
 .cabecalho-checkout {
   background: #1f1f1f;
-  color: #fff;
+  color: #ff9800;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
+}
+
+#voltar{
+   text-decoration: none; 
+   color: #fff; 
 }
 
 .cabecalho-checkout .logo {
@@ -93,7 +99,7 @@
 }
 
 .botao-principal {
-  background: #0070f3;
+  background: #ff9810;
   color: #fff;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -104,7 +110,7 @@
 }
 
 .botao-principal:hover {
-  background: #005ccc;
+  background: #ff9800;
 }
 
 .resumo-pedido {
@@ -147,6 +153,45 @@
   margin-top: 0.8rem;
   padding-top: 0.8rem;
   font-size: 1.1rem;
+}
+
+.info-item {
+  flex-grow: 1;
+}
+
+.controle-quantidade {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controle-quantidade button {
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controle-quantidade button:hover {
+  background: #ff884d;
+}
+
+#voltar {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #ff6b35;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 @media (max-width: 900px) {

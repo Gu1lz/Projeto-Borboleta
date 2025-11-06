@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import "./checkout.css";
+import React, { useState, use} from "react";
 
 export default function Produtos({ params }) {
     const Produtos = {
@@ -36,14 +38,31 @@ export default function Produtos({ params }) {
         alt: "Adesivo",
     },
     };
+    const paramsCerto = React.use(params);
+    const objetoProduto = paramsCerto.id;
 
-    const objetoProduto = params.id
-    const produto = Produtos[objetoProduto]
+    const produto = Produtos[objetoProduto];
+
+    const [quantidade, setQuantidade] = useState(1);
+
+    const adicionar = () => setQuantidade(quantidade + 1);
+
+    const remover = () => {
+      if (quantidade > 1) setQuantidade(quantidade - 1);
+    };
+
+    const total = produto.valor * quantidade;
+
+    const voltarParaHome = () => {
+    window.location.href = "/";
+  };
 
     return (<article className="pagina-checkout">
       <header className="cabecalho-checkout">
-        <article className="logo">GR-graficas</article>
-        <nav className="caminho">Home <span>›</span> Carrinho <span>›</span> Checkout</nav>
+        <article className="logo">GR</article>
+        <button id="voltar" onClick={voltarParaHome}>
+            Home
+        </button>
       </header>
 
       <main className="corpo-checkout">
@@ -51,6 +70,7 @@ export default function Produtos({ params }) {
           <h1>Finalizar Compra</h1>
 
           <form className="grade-formulario">
+            
             <fieldset>
               <legend>Dados do Cliente</legend>
               <label>
@@ -102,38 +122,46 @@ export default function Produtos({ params }) {
               </label>
             </fieldset>
 
+           <article className="item-resumo">
+            <Image
+              src={produto.imagem}
+              alt={produto.alt}
+              width={100}
+              height={70}
+            />
+
+            <article className="info-item">
+              <strong>{produto.nome}</strong>
+              <p>{produto.preco}</p>
+            </article>
+
+            <article className="controle-quantidade">
+              <button type="button" onClick={remover}>−</button>
+              <span>{quantidade}</span>
+              <button type="button" onClick={adicionar}>+</button>
+            </article>
+          </article>
+
+          <article className="linha-resumo">
+            <span>Subtotal</span>
+            <span>R$ {produto.valor * quantidade},00</span>
+          </article>
+
+          <article className="linha-resumo">
+            <span>Frete</span>
+            <span>Grátis</span>
+          </article>
+
+          <article className="total-resumo">
+            <span>Total</span>
+            <strong>R$ {produto.valor * quantidade},00</strong>
+          </article>
+
             <article className="acoes">
               <button type="submit" className="botao-principal">Finalizar Pedido</button>
             </article>
           </form>
         </section>
-
-        <aside className="resumo-pedido">
-          <article className="cartao-resumo">
-            <h2>Resumo do Pedido</h2>
-            <article className="item-resumo">
-              <Image src={produto.imagem} alt={produto.alt} width={100} height={70} />
-              <article>
-                <strong>{produto.nome}</strong>
-                <p>{produto.preco}</p>
-              </article>
-            </article>
-
-            <article className="linha-resumo">
-              <span>Subtotal</span>
-              <span>R$ {produto.valor},00</span>
-            </article>
-            <article className="linha-resumo">
-              <span>Frete</span>
-              <span>Grátis</span>
-            </article>
-
-            <article className="total-resumo">
-              <span>Total</span>
-              <strong>R$ {produto.valor},00</strong>
-            </article>
-          </article>
-        </aside>
       </main>
     </article>
   );
