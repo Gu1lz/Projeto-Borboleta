@@ -4,8 +4,7 @@ import styles from "../../Componentes/styles/Header.css"
 import Link from "next/link";
 
 
-
-const Header = () => {
+const Header = ({ abrirMenuSan }) => {
   const logo = "/Assets/logo.jpeg";
   const links = [
     { href: "#comunicacao", label: "Comunicação Visual" },
@@ -21,6 +20,7 @@ const Header = () => {
     <header>
       <nav>
         <Image src={logo} width={200} height={100} alt="logo.jpeg"></Image>
+        <button className="menu-san" onClick={abrirMenuSan}>☰</button>
         <ul className="menu-navegacao" id="menu"> 
             {links.map((link, index) => (
             <li key={index}>
