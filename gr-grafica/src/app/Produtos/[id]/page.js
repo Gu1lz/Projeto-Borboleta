@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import "./checkout.css";
-import React, { useState, use} from "react";
+import React, { useState, useEffect, use} from "react";
+
 
 export default function Produtos({ params }) {
     const Produtos = {
@@ -52,38 +53,84 @@ export default function Produtos({ params }) {
     };
 
     const total = produto.valor * quantidade;
+    
+    const mercadoPago = () => {
+      const mp = new window.MercadoPago("TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-305558686");  
+
+    };
 
     const voltarParaHome = () => {
     window.location.href = "/";
   };
 
-    return (<article className="pagina-checkout">
+  const gerarPagamento = (infos) => {
+    const valores = infos.target;
+    const obj = Object.fromEntries(new FormData(valores).entries());
+    const uniqueKey = `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
+    const data = {  transaction_amount: Number(obj.transactionAmount), description: obj.description, payment_method_id: "pix", 
+      payer: {
+        email: obj.email, 
+        first_name: obj.payerFirstName,
+        last_name: obj.payerLastName,
+        identification: {
+          type: "CPF",
+          number: obj.cpf},
+        },
+      address: {zip_code: "555555555",street_name: "555555555",street_number: "555555555",neighborhood: "555555555",city: "555555555",federal_unit: "555555555"}};
+
+    useEffect(() => {
+    fetch('https://api.mercadopago.com/v1/payments',
+      {
+         headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-30555868',
+              'X-Idempotency-Key': uniqueKey
+            },
+          body: JSON.stringify(data)
+      }
+    )
+    .then((res) => res.json())
+    .then((result) => {console.log(result);});
+    }, []);
+  }
+
+    return (
+    <article className="pagina-checkout">
       <header className="cabecalho-checkout">
         <article className="logo">GR</article>
         <button id="voltar" onClick={voltarParaHome}>
             Home
         </button>
       </header>
-
+      <script src="https://sdk.mercadopago.com/js/v2" onLoad={mercadoPago}></script>
       <main className="corpo-checkout">
         <section className="formulario-checkout">
           <h1>Finalizar Compra</h1>
 
-          <form className="grade-formulario">
+          <form className="grade-formulario" id="form-checkout" action={gerarPagamento}>
             
             <fieldset>
               <legend>Dados do Cliente</legend>
               <label>
-                Nome Completo
-                <input type="text" placeholder="Digite seu nome completo" />
+                Nome
+                <input id="form-checkout__payerFirstName" name="payerFirstName" type="text" placeholder="Digite seu nome completo" />
+              </label>
+              <label>
+              Sobrenome
+              <input
+                id="form-checkout__payerLastName"
+                name="payerLastName"
+                type="text"
+                placeholder="Digite seu sobrenome"
+              />
               </label>
               <label>
                 E-mail
-                <input type="email" placeholder="exemplo@email.com" />
+                <input id="form-checkout__email" name="email"type="email" placeholder="exemplo@email.com" />
               </label>
               <label>
-                Telefone
-                <input type="text" placeholder="(00) 00000-0000" />
+                Cpf
+                <input id="form-checkout_cpf" name="cpf"type="text" placeholder="123456789" />
               </label>
             </fieldset>
 
@@ -107,6 +154,8 @@ export default function Produtos({ params }) {
                   <input type="text" placeholder="00000-000" />
                 </label>
               </article>
+            <input type="hidden" name="transactionAmount" id="transactionAmount" value={produto.valor * quantidade}/>
+            <input type="hidden" name="description" id="description" value={produto.nome}/>
             </fieldset>
 
             <fieldset>
@@ -141,6 +190,8 @@ export default function Produtos({ params }) {
               <button type="button" onClick={adicionar}>+</button>
             </article>
           </article>
+
+          
 
           <article className="linha-resumo">
             <span>Subtotal</span>
