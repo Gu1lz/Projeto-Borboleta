@@ -57,19 +57,22 @@ Claro! Aqui está o trecho prontinho para você **copiar e colar no seu README.m
 * Estrutura dividida em seções para **dados pessoais**, **endereço de entrega** e **forma de pagamento**.
 * Inclui botão para retornar à página inicial (`Home`).
 * Funções principais:
-
-  * `adicionar()` — incrementa a quantidade de produtos.
+  * `adicionar()` — incrementa a quantidade de produtos
   * `remover()` — reduz a quantidade, respeitando o mínimo de 1 item.
   * `voltarParaHome()` — redireciona o usuário para a página principal.
+  * `extrairValores(itens)` - Captura os dados do formulário, identifica o método de pagamento selecionado e abre o popup de confirmação.
+  * `closePopup()` - Fecha o popup de confirmação de pagamento.
+  * useEffect para gerar dinamicamente a imagem de Pix (QR Code) ou Boleto (código de barras) quando o pedido é finalizado.
   * Cálculo dinâmico do **subtotal** e **total** baseado na quantidade selecionada.
   * Utilização de **React Hooks (useState)** e **Next/Image** para performance e interatividade.
 
+* Hooks:
+  * quantidade → quantidade de produtos.
+  * valorPopUp → controla se o popup está aberto.
+  * pagamentoSelecionado → armazena o método de pagamento escolhido.
+  * imagemPagamento → guarda a URL da imagem do QR Code ou Boleto.
 
-#### Header Responsivo
-
-* CSS modularizado com media queries para até **480px**, **768px** e **1024px**.
-
----
+* useEffect - > gerar a imagem de pagamento sempre que o popup é aberto. Dependência valorPopUp garante que o efeito só rode quando o usuário finaliza o pedido e o popup é exibido.
 
 ### Estilo e Responsividade (globals.css)
 
@@ -77,7 +80,7 @@ O CSS foi reestruturado para o padrão Next.js, garantindo:
 
 * Layout fluido com *grid* e *flexbox*.
 * Padrões de espaçamento e fontes consistentes.
-* Media queries que ajustam tamanhos de fonte, espaçamento e exibição de elementos conforme a tela
+* CSS modularizado com media queries para até **480px**, **768px** e **1024px**.
 
 ---
 
@@ -87,13 +90,10 @@ O CSS foi reestruturado para o padrão Next.js, garantindo:
 * React Hooks (useState, props controlados)
 * CSS Modular (importação por componente)
 * Imagens otimizadas via Next/Image
-* JavaScript funcional e reutilizável
-* Responsividade total (mobile-first)
+* Api para gerar boleto e Qr-Code
 
 ---
 
 ### Conclusão
 
-O projeto **GR Soluções Gráficas em Next.js** representa a modernização completa de um site estático para uma aplicação web dinâmica e responsiva.
-Ele alia **design profissional, usabilidade aprimorada e performance otimizada**, mantendo a identidade visual da gráfica e ampliando suas possibilidades digitais.
-Essa nova versão é ideal para atender tanto empresas quanto consumidores, oferecendo uma experiência prática, fluida e moderna em qualquer dispositivo.
+Com o projeto GR Soluções Gráficas em Next.js aprendemos a construir um site completo e funcional utilizando Next.js, colocando em prática os conceitos estudados em aula. Conseguimos compreender melhor como dividir a aplicação em componentes reutilizáveis, gerenciar estados dinâmicos com hooks como useState e useEffect, e lidar com rotas dinâmicas para exibir conteúdos específicos conforme a interação do usuário. Também adquirimos experiência na integração de APIs externas, como para a geração de QR Codes e boletos, além de criar um layout responsivo e otimizado em React/Next.js. Vivenciamos todo o fluxo de um sistema de e-commerce, desde a exibição de produtos até o checkout, e desenvolvemos o site inteiro do zero, aumentando nossa capacidade de planejar, implementar e organizar um projeto web completo.
