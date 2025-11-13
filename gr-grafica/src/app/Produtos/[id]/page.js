@@ -53,10 +53,12 @@ export default function Produtos({ params }) {
     };
 
     const total = produto.valor * quantidade;
+
+    const [dadosPagamento, setDadosPagamento] = useState(null);
+    const [uniqueKey, setUniqueKey] = useState(null);
     
     const mercadoPago = () => {
       const mp = new window.MercadoPago("TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-305558686");  
-
     };
 
     const voltarParaHome = () => {
@@ -66,33 +68,47 @@ export default function Produtos({ params }) {
   const gerarPagamento = (infos) => {
     const valores = infos.target;
     const obj = Object.fromEntries(new FormData(valores).entries());
-    const uniqueKey = `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
-    const data = {  transaction_amount: Number(obj.transactionAmount), description: obj.description, payment_method_id: "pix", 
+    const key = `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
+    setUniqueKey(key);
+    
+    const data = {
+      transaction_amount: Number(obj.transactionAmount),
+      description: obj.description,
+      payment_method_id: "pix",
       payer: {
-        email: obj.email, 
+        email: obj.email,
         first_name: obj.payerFirstName,
         last_name: obj.payerLastName,
-        identification: {
-          type: "CPF",
-          number: obj.cpf},
-        },
-      address: {zip_code: "555555555",street_name: "555555555",street_number: "555555555",neighborhood: "555555555",city: "555555555",federal_unit: "555555555"}};
-
-    useEffect(() => {
-    fetch('https://api.mercadopago.com/v1/payments',
-      {
-         headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-30555868',
-              'X-Idempotency-Key': uniqueKey
-            },
-          body: JSON.stringify(data)
-      }
-    )
-    .then((res) => res.json())
-    .then((result) => {console.log(result);});
-    }, []);
+        identification: { type: "CPF", number: obj.cpf },
+      },
+      address: {
+        zip_code: "555555555",
+        street_name: "555555555",
+        street_number: "555555555",
+        neighborhood: "555555555",
+        city: "555555555",
+        federal_unit: "555555555",
+      },
+    };
+    setDadosPagamento(data);
   }
+
+  useEffect(() => {
+    if (dadosPagamento && uniqueKey) {
+      fetch("https://api.mercadopago.com/v1/payments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-305558686",
+          "X-Idempotency-Key": uniqueKey,
+        },
+        body: JSON.stringify(dadosPagamento),
+      })
+        .then((res) => res.json())
+        .then((result) => console.log(result))
+        .catch((err) => console.error(err));
+    }
+  }, [dadosPagamento, uniqueKey]);
 
     return (
     <article className="pagina-checkout">
