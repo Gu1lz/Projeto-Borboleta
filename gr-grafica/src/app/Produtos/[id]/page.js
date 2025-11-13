@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import "./checkout.css";
+import "./popUp.css";
 import React, { useState, useEffect, use} from "react";
 
 
 export default function Produtos({ params }) {
+
     const Produtos = {
     cartaoVisita: {
         id: "cartaoVisita",
@@ -45,6 +47,9 @@ export default function Produtos({ params }) {
     const produto = Produtos[objetoProduto];
 
     const [quantidade, setQuantidade] = useState(1);
+    const [valorPopUp, setPopUp] = useState(false);
+    const [pagamentoSelecionado, setPagamentoSelecionado] = useState("");
+    const [imagemPagamento, setImagemPagamento] = useState("");
 
     const adicionar = () => setQuantidade(quantidade + 1);
 
@@ -53,62 +58,48 @@ export default function Produtos({ params }) {
     };
 
     const total = produto.valor * quantidade;
-
-    const [dadosPagamento, setDadosPagamento] = useState(null);
-    const [uniqueKey, setUniqueKey] = useState(null);
     
-    const mercadoPago = () => {
-      const mp = new window.MercadoPago("TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-305558686");  
-    };
 
     const voltarParaHome = () => {
-    window.location.href = "/";
-  };
-
-  const gerarPagamento = (infos) => {
-    const valores = infos.target;
-    const obj = Object.fromEntries(new FormData(valores).entries());
-    const key = `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
-    setUniqueKey(key);
-    
-    const data = {
-      transaction_amount: Number(obj.transactionAmount),
-      description: obj.description,
-      payment_method_id: "pix",
-      payer: {
-        email: obj.email,
-        first_name: obj.payerFirstName,
-        last_name: obj.payerLastName,
-        identification: { type: "CPF", number: obj.cpf },
-      },
-      address: {
-        zip_code: "555555555",
-        street_name: "555555555",
-        street_number: "555555555",
-        neighborhood: "555555555",
-        city: "555555555",
-        federal_unit: "555555555",
-      },
+      window.location.href = "/";
     };
-    setDadosPagamento(data);
-  }
 
-  useEffect(() => {
-    if (dadosPagamento && uniqueKey) {
-      fetch("https://api.mercadopago.com/v1/payments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer TEST-6952800602414772-111123-db09b23090b792a4fd7bf6cdee306422-305558686",
-          "X-Idempotency-Key": uniqueKey,
-        },
-        body: JSON.stringify(dadosPagamento),
-      })
-        .then((res) => res.json())
-        .then((result) => console.log(result))
-        .catch((err) => console.error(err));
-    }
-  }, [dadosPagamento, uniqueKey]);
+    const extrairValores = (itens) => {
+      itens.preventDefault();
+      const valores = new FormData(itens.target);
+      const obj = Object.fromEntries(valores.entries());
+      
+      console.log(obj);
+      setPagamentoSelecionado(obj.pagamento);
+      setPopUp(true);
+    };
+
+    useEffect(() => {
+      const valor = objetoProduto;
+          if (pagamentoSelecionado === "pix") {
+          const url = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(valor)}`;
+          fetch(url)
+            .then(res => {
+              if (res.ok) setImagemPagamento(url);
+              else console.error("Erro ao gerar QR Code");
+            })
+            .catch(err => console.error(err));
+        }
+
+        if (pagamentoSelecionado === "boleto") {
+          const url = `https://bwipjs-api.metafloor.com/?bcid=code128&text=${encodeURIComponent(valor)}&scale=4&includetext`;
+          fetch(url)
+            .then(res => {
+              if (res.ok) setImagemPagamento(url);
+              else console.error("Erro ao gerar código de barras");
+            })
+            .catch(err => console.error(err));
+        }
+      }, [valorPopUp]);
+
+    
+
+    const closePopup = () => setPopUp(false);
 
     return (
     <article className="pagina-checkout">
@@ -118,35 +109,29 @@ export default function Produtos({ params }) {
             Home
         </button>
       </header>
-      <script src="https://sdk.mercadopago.com/js/v2" onLoad={mercadoPago}></script>
       <main className="corpo-checkout">
         <section className="formulario-checkout">
           <h1>Finalizar Compra</h1>
 
-          <form className="grade-formulario" id="form-checkout" action={gerarPagamento}>
+          <form className="grade-formulario" id="form-checkout" onSubmit={extrairValores}>
             
-            <fieldset>
+            <fieldset required>
               <legend>Dados do Cliente</legend>
               <label>
                 Nome
-                <input id="form-checkout__payerFirstName" name="payerFirstName" type="text" placeholder="Digite seu nome completo" />
+                <input type="text" placeholder="Digite seu nome" required/>
               </label>
               <label>
               Sobrenome
-              <input
-                id="form-checkout__payerLastName"
-                name="payerLastName"
-                type="text"
-                placeholder="Digite seu sobrenome"
-              />
+              <input type="text" placeholder="Digite seu sobrenome" required/>
               </label>
               <label>
                 E-mail
-                <input id="form-checkout__email" name="email"type="email" placeholder="exemplo@email.com" />
+                <input type="email" placeholder="exemplo@email.com" required/>
               </label>
               <label>
                 Cpf
-                <input id="form-checkout_cpf" name="cpf"type="text" placeholder="123456789" />
+                <input type="text" placeholder="123456789" required/>
               </label>
             </fieldset>
 
@@ -154,7 +139,7 @@ export default function Produtos({ params }) {
               <legend>Endereço de Entrega</legend>
               <label>
                 Rua / Avenida
-                <input type="text" placeholder="Endereço" />
+                <input type="text" placeholder="Endereço" required/>
               </label>
               <article className="linha">
                 <label>
@@ -170,20 +155,15 @@ export default function Produtos({ params }) {
                   <input type="text" placeholder="00000-000" />
                 </label>
               </article>
-            <input type="hidden" name="transactionAmount" id="transactionAmount" value={produto.valor * quantidade}/>
-            <input type="hidden" name="description" id="description" value={produto.nome}/>
             </fieldset>
 
             <fieldset>
               <legend>Forma de Pagamento</legend>
               <label className="radio">
-                <input type="radio" name="pagamento" /> Cartão de Crédito
+                <input type="radio" name="pagamento" value="boleto" required  /> Boleto Bancário
               </label>
               <label className="radio">
-                <input type="radio" name="pagamento" /> Boleto Bancário
-              </label>
-              <label className="radio">
-                <input type="radio" name="pagamento" /> Pix
+                <input type="radio" name="pagamento" value="pix" /> Pix
               </label>
             </fieldset>
 
@@ -230,6 +210,15 @@ export default function Produtos({ params }) {
           </form>
         </section>
       </main>
+      {valorPopUp && (
+        <article className="popup">
+          <article className="popup-content">
+            <h2>Pagamento - {pagamentoSelecionado}</h2>
+            {imagemPagamento && <img src={imagemPagamento} alt={pagamentoSelecionado} />}
+            <button onClick={closePopup}>Fechar</button>
+          </article>
+        </article>
+      )}
     </article>
   );
 }
