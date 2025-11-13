@@ -67,9 +67,7 @@ export default function Produtos({ params }) {
     const extrairValores = (itens) => {
       itens.preventDefault();
       const valores = new FormData(itens.target);
-      const obj = Object.fromEntries(valores.entries());
-      
-      console.log(obj);
+      const obj = Object.fromEntries(valores.entries());      
       setPagamentoSelecionado(obj.pagamento);
       setPopUp(true);
     };
