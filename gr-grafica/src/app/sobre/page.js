@@ -5,7 +5,7 @@ import Detalhes from "./componentes/Detalhes.js"
 export default function Sobre() {
   return (
     <>
-      <Header />
+      <Header/>
       <Detalhes />
       <Footer />
     </>

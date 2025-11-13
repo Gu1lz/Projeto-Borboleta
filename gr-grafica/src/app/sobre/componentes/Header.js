@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "../../Componentes/styles/Header.css"
 import Link from "next/link";
-
+import { useState } from "react";
 
 
 const Header = () => {
@@ -17,11 +17,21 @@ const Header = () => {
   const voltarParaHome = () => {
     window.location.href = "/";
   };
+
+  const [menuSan, setMenuSan] = useState(false);
+  const abrirMenuSan = () => setMenuSan(!menuSan)
+  
+  let classesMenu = "menu-navegacao";
+  if (menuSan == true) {
+      classesMenu += " active";
+    }
+
   return (
     <header>
       <nav>
         <Image src={logo} width={200} height={100} alt="logo.jpeg"></Image>
-        <ul className="menu-navegacao" id="menu"> 
+        <button className="menu-san" onClick={abrirMenuSan}>☰</button>
+        <ul className={classesMenu} id="menu"> 
             {links.map((link, index) => (
             <li key={index}>
               <a href={link.href}>{link.label}</a>

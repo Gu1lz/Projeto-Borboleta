@@ -28,7 +28,7 @@ const Footer = () => {
         <nav className="footer-section">
           <h3>Empresa</h3>
           <ul>
-            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="sobre">Sobre Nós</a></li>
             <li><a href="#">Nossa História</a></li>
             <li><a href="#">Trabalhe Conosco</a></li>
             <li><a href="#">Blog</a></li>
