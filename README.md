@@ -47,8 +47,6 @@ Além disso, um botão para fazer Orçamento
 * Após envio, exibe uma mensagem de sucesso e fecha automaticamente após alguns segundos.
 * Gerenciado pelos hooks `useState` e callbacks `abrirMenu` / `fecharMenu`.
 
-Claro! Aqui está o trecho prontinho para você **copiar e colar no seu README.md** 👇
-
 ---
 #### Página de Checkout (`Produtos.js`)
 
